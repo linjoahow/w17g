@@ -1540,7 +1540,7 @@ ctx.restore()
 </t>
 <t tx="2015.20150629014948.1">@cherrypy.expose
 # N 為齒數, M 為模數, P 為壓力角
-def mygeartest4(self , M=10, P=15,N1=15, N2=24,N3=15,N4=24 ,N5=15,N6=24):
+def mygeartest4(self , M=10, P=15,N1=15, N2=24,N3=15,N4=24):
     outstring = '''
 &lt;!DOCTYPE html&gt; 
 &lt;html&gt;
@@ -1556,6 +1556,7 @@ def mygeartest4(self , M=10, P=15,N1=15, N2=24,N3=15,N4=24 ,N5=15,N6=24):
 &lt;form method=POST action=mygeartest4&gt;
 模數:&lt;input type=text name=M&gt;&lt;br /&gt;
 壓力角:&lt;input type=text name=P&gt;&lt;br /&gt;
+
 齒輪1齒數:&lt;select name=N1&gt;
      &lt;option selected="true"&gt;15&lt;/option&gt;
      &lt;option&gt;16&lt;/option&gt;
@@ -1693,6 +1694,7 @@ def mygeartest4(self , M=10, P=15,N1=15, N2=24,N3=15,N4=24 ,N5=15,N6=24):
     &lt;option&gt;79&lt;/option&gt;
     &lt;option&gt;80&lt;/option&gt;
     &lt;/select&gt;
+    
 齒輪3齒數:&lt;select name=N3&gt;
      &lt;option selected="true"&gt;15&lt;/option&gt;
      &lt;option&gt;16&lt;/option&gt;
