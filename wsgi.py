@@ -914,7 +914,7 @@ class Hello(object):
         return outstring
     @cherrypy.expose
     # N 為齒數, M 為模數, P 為壓力角
-    def mygeartest4(self , M=10, P=15,N1=15, N2=24,N3=15,N4=24 ,N5=15,N6=24):
+    def mygeartest4(self , M=10, P=20,N1=15, N2=24,N3=15,N4=24 ):
         outstring = '''
     <!DOCTYPE html> 
     <html>
@@ -1009,7 +1009,7 @@ class Hello(object):
         <option>21</option>
         <option>22</option>
         <option>23</option>
-         <option selected="true">24</option>
+        <option>24</option>
         <option>25</option>
         <option>26</option>
         <option>27</option>
@@ -1145,7 +1145,7 @@ class Hello(object):
         <option>21</option>
         <option>22</option>
         <option>23</option>
-         <option selected="true">24</option>
+        <option>24</option>
         <option>25</option>
         <option>26</option>
         <option>27</option>

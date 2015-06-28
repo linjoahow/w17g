@@ -70,6 +70,12 @@ expanded=".20150428201639.1889,"><vh>@file gear.py</vh></v>
 <v t="2015.20150330144929.1763" a="E"><vh>以下為參考資料</vh>
 <v t="2015.20150330144929.1764"><vh>Brython 正齒輪程式</vh></v>
 </v>
+<v t="2015.20150629025624.2" a="E"><vh>Recovered Nodes</vh>
+<v t="2015.20150629025624.3"><vh>Recovered node "mygeartest4" from @clean wsgi.py</vh>
+<v t="2015.20150629025624.4"><vh>old:mygeartest4</vh></v>
+<v t="2015.20150629025624.5"><vh>new:mygeartest4</vh></v>
+</v>
+</v>
 </vnodes>
 <tnodes>
 <t tx=".20150428191028.1815">@cherrypy.expose
@@ -1540,6 +1546,811 @@ ctx.restore()
 </t>
 <t tx="2015.20150629014948.1">@cherrypy.expose
 # N 為齒數, M 為模數, P 為壓力角
+def mygeartest4(self , M=10, P=20,N1=15, N2=24,N3=15,N4=24 ):
+    outstring = '''
+&lt;!DOCTYPE html&gt; 
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="content-type" content="text/html;charset=utf-8"&gt;
+&lt;!-- 載入 brython.js --&gt;
+&lt;script type="text/javascript" src="/static/Brython3.1.1-20150328-091302/brython.js"&gt;&lt;/script&gt;
+&lt;script src="/static/Cango2D.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;script src="/static/gearUtils-04.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;!-- 啟動 brython() --&gt;
+&lt;body onload="brython()"&gt;
+&lt;form method=POST action=mygeartest4&gt;
+模數:&lt;input type=text name=M&gt;&lt;br /&gt;
+壓力角:&lt;input type=text name=P&gt;&lt;br /&gt;
+齒輪1齒數:&lt;select name=N1&gt;
+     &lt;option selected="true"&gt;15&lt;/option&gt;
+     &lt;option&gt;16&lt;/option&gt;
+    &lt;option&gt;17&lt;/option&gt;
+    &lt;option&gt;18&lt;/option&gt;
+    &lt;option&gt;19&lt;/option&gt;
+    &lt;option&gt;20&lt;/option&gt;
+    &lt;option&gt;21&lt;/option&gt;
+    &lt;option&gt;22&lt;/option&gt;
+    &lt;option&gt;23&lt;/option&gt;
+    &lt;option&gt;24&lt;/option&gt;
+    &lt;option&gt;25&lt;/option&gt;
+    &lt;option&gt;26&lt;/option&gt;
+    &lt;option&gt;27&lt;/option&gt;
+    &lt;option&gt;28&lt;/option&gt;
+    &lt;option&gt;29&lt;/option&gt;
+    &lt;option&gt;30&lt;/option&gt;
+    &lt;option&gt;31&lt;/option&gt;
+    &lt;option&gt;32&lt;/option&gt;
+    &lt;option&gt;33&lt;/option&gt;
+    &lt;option&gt;34&lt;/option&gt;
+    &lt;option&gt;35&lt;/option&gt;
+    &lt;option&gt;36&lt;/option&gt;
+    &lt;option&gt;37&lt;/option&gt;
+    &lt;option&gt;38&lt;/option&gt;
+    &lt;option&gt;39&lt;/option&gt;
+    &lt;option&gt;40&lt;/option&gt;
+    &lt;option&gt;41&lt;/option&gt;
+    &lt;option&gt;42&lt;/option&gt;
+    &lt;option&gt;43&lt;/option&gt;
+    &lt;option&gt;44&lt;/option&gt;
+    &lt;option&gt;45&lt;/option&gt;
+    &lt;option&gt;46&lt;/option&gt;
+    &lt;option&gt;47&lt;/option&gt;
+    &lt;option&gt;48&lt;/option&gt;
+    &lt;option&gt;49&lt;/option&gt;
+    &lt;option&gt;50&lt;/option&gt;
+    &lt;option&gt;51&lt;/option&gt;
+    &lt;option&gt;52&lt;/option&gt;
+    &lt;option&gt;53&lt;/option&gt;
+    &lt;option&gt;54&lt;/option&gt;
+    &lt;option&gt;55&lt;/option&gt;
+    &lt;option&gt;56&lt;/option&gt;
+    &lt;option&gt;57&lt;/option&gt;
+    &lt;option&gt;58&lt;/option&gt;
+    &lt;option&gt;59&lt;/option&gt;
+    &lt;option&gt;60&lt;/option&gt;
+    &lt;option&gt;61&lt;/option&gt;
+    &lt;option&gt;62&lt;/option&gt;
+    &lt;option&gt;63&lt;/option&gt;
+    &lt;option&gt;64&lt;/option&gt;
+    &lt;option&gt;65&lt;/option&gt;
+    &lt;option&gt;66&lt;/option&gt;
+    &lt;option&gt;67&lt;/option&gt;
+    &lt;option&gt;68&lt;/option&gt;
+    &lt;option&gt;69&lt;/option&gt;
+    &lt;option&gt;70&lt;/option&gt;
+    &lt;option&gt;71&lt;/option&gt;
+    &lt;option&gt;72&lt;/option&gt;
+    &lt;option&gt;73&lt;/option&gt;
+    &lt;option&gt;74&lt;/option&gt;
+    &lt;option&gt;75&lt;/option&gt;
+    &lt;option&gt;76&lt;/option&gt;
+    &lt;option&gt;77&lt;/option&gt;
+    &lt;option&gt;78&lt;/option&gt;
+    &lt;option&gt;79&lt;/option&gt;
+    &lt;option&gt;80&lt;/option&gt;
+    &lt;/select&gt;
+
+齒輪2齒數:&lt;select name=N2&gt;
+     &lt;option&gt;15&lt;/option&gt;
+     &lt;option&gt;16&lt;/option&gt;
+    &lt;option&gt;17&lt;/option&gt;
+    &lt;option&gt;18&lt;/option&gt;
+    &lt;option&gt;19&lt;/option&gt;
+    &lt;option&gt;20&lt;/option&gt;
+    &lt;option&gt;21&lt;/option&gt;
+    &lt;option&gt;22&lt;/option&gt;
+    &lt;option&gt;23&lt;/option&gt;
+    &lt;option&gt;24&lt;/option&gt;
+    &lt;option&gt;25&lt;/option&gt;
+    &lt;option&gt;26&lt;/option&gt;
+    &lt;option&gt;27&lt;/option&gt;
+    &lt;option&gt;28&lt;/option&gt;
+    &lt;option&gt;29&lt;/option&gt;
+    &lt;option&gt;30&lt;/option&gt;
+    &lt;option&gt;31&lt;/option&gt;
+    &lt;option&gt;32&lt;/option&gt;
+    &lt;option&gt;33&lt;/option&gt;
+    &lt;option&gt;34&lt;/option&gt;
+    &lt;option&gt;35&lt;/option&gt;
+    &lt;option&gt;36&lt;/option&gt;
+    &lt;option&gt;37&lt;/option&gt;
+    &lt;option&gt;38&lt;/option&gt;
+    &lt;option&gt;39&lt;/option&gt;
+    &lt;option&gt;40&lt;/option&gt;
+    &lt;option&gt;41&lt;/option&gt;
+    &lt;option&gt;42&lt;/option&gt;
+    &lt;option&gt;43&lt;/option&gt;
+    &lt;option&gt;44&lt;/option&gt;
+    &lt;option&gt;45&lt;/option&gt;
+    &lt;option&gt;46&lt;/option&gt;
+    &lt;option&gt;47&lt;/option&gt;
+    &lt;option&gt;48&lt;/option&gt;
+    &lt;option&gt;49&lt;/option&gt;
+    &lt;option&gt;50&lt;/option&gt;
+    &lt;option&gt;51&lt;/option&gt;
+    &lt;option&gt;52&lt;/option&gt;
+    &lt;option&gt;53&lt;/option&gt;
+    &lt;option&gt;54&lt;/option&gt;
+    &lt;option&gt;55&lt;/option&gt;
+    &lt;option&gt;56&lt;/option&gt;
+    &lt;option&gt;57&lt;/option&gt;
+    &lt;option&gt;58&lt;/option&gt;
+    &lt;option&gt;59&lt;/option&gt;
+    &lt;option&gt;60&lt;/option&gt;
+    &lt;option&gt;61&lt;/option&gt;
+    &lt;option&gt;62&lt;/option&gt;
+    &lt;option&gt;63&lt;/option&gt;
+    &lt;option&gt;64&lt;/option&gt;
+    &lt;option&gt;65&lt;/option&gt;
+    &lt;option&gt;66&lt;/option&gt;
+    &lt;option&gt;67&lt;/option&gt;
+    &lt;option&gt;68&lt;/option&gt;
+    &lt;option&gt;69&lt;/option&gt;
+    &lt;option&gt;70&lt;/option&gt;
+    &lt;option&gt;71&lt;/option&gt;
+    &lt;option&gt;72&lt;/option&gt;
+    &lt;option&gt;73&lt;/option&gt;
+    &lt;option&gt;74&lt;/option&gt;
+    &lt;option&gt;75&lt;/option&gt;
+    &lt;option&gt;76&lt;/option&gt;
+    &lt;option&gt;77&lt;/option&gt;
+    &lt;option&gt;78&lt;/option&gt;
+    &lt;option&gt;79&lt;/option&gt;
+    &lt;option&gt;80&lt;/option&gt;
+    &lt;/select&gt;
+齒輪3齒數:&lt;select name=N3&gt;
+     &lt;option selected="true"&gt;15&lt;/option&gt;
+     &lt;option&gt;16&lt;/option&gt;
+    &lt;option&gt;17&lt;/option&gt;
+    &lt;option&gt;18&lt;/option&gt;
+    &lt;option&gt;19&lt;/option&gt;
+    &lt;option&gt;20&lt;/option&gt;
+    &lt;option&gt;21&lt;/option&gt;
+    &lt;option&gt;22&lt;/option&gt;
+    &lt;option&gt;23&lt;/option&gt;
+    &lt;option&gt;24&lt;/option&gt;
+    &lt;option&gt;25&lt;/option&gt;
+    &lt;option&gt;26&lt;/option&gt;
+    &lt;option&gt;27&lt;/option&gt;
+    &lt;option&gt;28&lt;/option&gt;
+    &lt;option&gt;29&lt;/option&gt;
+    &lt;option&gt;30&lt;/option&gt;
+    &lt;option&gt;31&lt;/option&gt;
+    &lt;option&gt;32&lt;/option&gt;
+    &lt;option&gt;33&lt;/option&gt;
+    &lt;option&gt;34&lt;/option&gt;
+    &lt;option&gt;35&lt;/option&gt;
+    &lt;option&gt;36&lt;/option&gt;
+    &lt;option&gt;37&lt;/option&gt;
+    &lt;option&gt;38&lt;/option&gt;
+    &lt;option&gt;39&lt;/option&gt;
+    &lt;option&gt;40&lt;/option&gt;
+    &lt;option&gt;41&lt;/option&gt;
+    &lt;option&gt;42&lt;/option&gt;
+    &lt;option&gt;43&lt;/option&gt;
+    &lt;option&gt;44&lt;/option&gt;
+    &lt;option&gt;45&lt;/option&gt;
+    &lt;option&gt;46&lt;/option&gt;
+    &lt;option&gt;47&lt;/option&gt;
+    &lt;option&gt;48&lt;/option&gt;
+    &lt;option&gt;49&lt;/option&gt;
+    &lt;option&gt;50&lt;/option&gt;
+    &lt;option&gt;51&lt;/option&gt;
+    &lt;option&gt;52&lt;/option&gt;
+    &lt;option&gt;53&lt;/option&gt;
+    &lt;option&gt;54&lt;/option&gt;
+    &lt;option&gt;55&lt;/option&gt;
+    &lt;option&gt;56&lt;/option&gt;
+    &lt;option&gt;57&lt;/option&gt;
+    &lt;option&gt;58&lt;/option&gt;
+    &lt;option&gt;59&lt;/option&gt;
+    &lt;option&gt;60&lt;/option&gt;
+    &lt;option&gt;61&lt;/option&gt;
+    &lt;option&gt;62&lt;/option&gt;
+    &lt;option&gt;63&lt;/option&gt;
+    &lt;option&gt;64&lt;/option&gt;
+    &lt;option&gt;65&lt;/option&gt;
+    &lt;option&gt;66&lt;/option&gt;
+    &lt;option&gt;67&lt;/option&gt;
+    &lt;option&gt;68&lt;/option&gt;
+    &lt;option&gt;69&lt;/option&gt;
+    &lt;option&gt;70&lt;/option&gt;
+    &lt;option&gt;71&lt;/option&gt;
+    &lt;option&gt;72&lt;/option&gt;
+    &lt;option&gt;73&lt;/option&gt;
+    &lt;option&gt;74&lt;/option&gt;
+    &lt;option&gt;75&lt;/option&gt;
+    &lt;option&gt;76&lt;/option&gt;
+    &lt;option&gt;77&lt;/option&gt;
+    &lt;option&gt;78&lt;/option&gt;
+    &lt;option&gt;79&lt;/option&gt;
+    &lt;option&gt;80&lt;/option&gt;
+    &lt;/select&gt;
+齒輪4齒數:&lt;select name=N4&gt;
+     &lt;option&gt;15&lt;/option&gt;
+     &lt;option&gt;16&lt;/option&gt;
+    &lt;option&gt;17&lt;/option&gt;
+    &lt;option&gt;18&lt;/option&gt;
+    &lt;option&gt;19&lt;/option&gt;
+    &lt;option&gt;20&lt;/option&gt;
+    &lt;option&gt;21&lt;/option&gt;
+    &lt;option&gt;22&lt;/option&gt;
+    &lt;option&gt;23&lt;/option&gt;
+    &lt;option&gt;24&lt;/option&gt;
+    &lt;option&gt;25&lt;/option&gt;
+    &lt;option&gt;26&lt;/option&gt;
+    &lt;option&gt;27&lt;/option&gt;
+    &lt;option&gt;28&lt;/option&gt;
+    &lt;option&gt;29&lt;/option&gt;
+    &lt;option&gt;30&lt;/option&gt;
+    &lt;option&gt;31&lt;/option&gt;
+    &lt;option&gt;32&lt;/option&gt;
+    &lt;option&gt;33&lt;/option&gt;
+    &lt;option&gt;34&lt;/option&gt;
+    &lt;option&gt;35&lt;/option&gt;
+    &lt;option&gt;36&lt;/option&gt;
+    &lt;option&gt;37&lt;/option&gt;
+    &lt;option&gt;38&lt;/option&gt;
+    &lt;option&gt;39&lt;/option&gt;
+    &lt;option&gt;40&lt;/option&gt;
+    &lt;option&gt;41&lt;/option&gt;
+    &lt;option&gt;42&lt;/option&gt;
+    &lt;option&gt;43&lt;/option&gt;
+    &lt;option&gt;44&lt;/option&gt;
+    &lt;option&gt;45&lt;/option&gt;
+    &lt;option&gt;46&lt;/option&gt;
+    &lt;option&gt;47&lt;/option&gt;
+    &lt;option&gt;48&lt;/option&gt;
+    &lt;option&gt;49&lt;/option&gt;
+    &lt;option&gt;50&lt;/option&gt;
+    &lt;option&gt;51&lt;/option&gt;
+    &lt;option&gt;52&lt;/option&gt;
+    &lt;option&gt;53&lt;/option&gt;
+    &lt;option&gt;54&lt;/option&gt;
+    &lt;option&gt;55&lt;/option&gt;
+    &lt;option&gt;56&lt;/option&gt;
+    &lt;option&gt;57&lt;/option&gt;
+    &lt;option&gt;58&lt;/option&gt;
+    &lt;option&gt;59&lt;/option&gt;
+    &lt;option&gt;60&lt;/option&gt;
+    &lt;option&gt;61&lt;/option&gt;
+    &lt;option&gt;62&lt;/option&gt;
+    &lt;option&gt;63&lt;/option&gt;
+    &lt;option&gt;64&lt;/option&gt;
+    &lt;option&gt;65&lt;/option&gt;
+    &lt;option&gt;66&lt;/option&gt;
+    &lt;option&gt;67&lt;/option&gt;
+    &lt;option&gt;68&lt;/option&gt;
+    &lt;option&gt;69&lt;/option&gt;
+    &lt;option&gt;70&lt;/option&gt;
+    &lt;option&gt;71&lt;/option&gt;
+    &lt;option&gt;72&lt;/option&gt;
+    &lt;option&gt;73&lt;/option&gt;
+    &lt;option&gt;74&lt;/option&gt;
+    &lt;option&gt;75&lt;/option&gt;
+    &lt;option&gt;76&lt;/option&gt;
+    &lt;option&gt;77&lt;/option&gt;
+    &lt;option&gt;78&lt;/option&gt;
+    &lt;option&gt;79&lt;/option&gt;
+    &lt;option&gt;80&lt;/option&gt;
+    &lt;/select&gt;
+
+
+&lt;!-- 以下為 canvas 畫圖程式 --&gt;
+&lt;script type="text/python"&gt;
+# 從 browser 導入 document
+from browser import document
+from math import *
+# 請注意, 這裡導入位於 Lib/site-packages 目錄下的 spur.py 檔案
+import spur
+
+# 準備在 id="plotarea" 的 canvas 中繪圖
+canvas = document["plotarea"]
+ctx = canvas.getContext("2d")
+
+# 以下利用 spur.py 程式進行繪圖, 接下來的協同設計運算必須要配合使用者的需求進行設計運算與繪圖
+# 其中並將工作分配給其他組員建立類似 spur.py 的相關零件繪圖模組
+# midx, midy 為齒輪圓心座標, rp 為節圓半徑, n 為齒數, pa 為壓力角, color 為線的顏色
+# Gear(midx, midy, rp, n=20, pa=20, color="black"):
+# 模數決定齒的尺寸大小, 囓合齒輪組必須有相同的模數與壓力角
+# 壓力角 pa 單位為角度
+pa ='''+str(P)+'''
+# m 為模數
+m = '''+str(M)+'''
+# 第1齒輪齒數
+n_g1 = '''+str(N1)+'''
+# 第2齒輪齒數
+n_g2 = '''+str(N2)+'''
+# 第3齒輪齒數
+n_g3 = '''+str(N3)+'''
+# 第4齒輪齒數
+n_g4 = '''+str(N4)+'''
+
+
+# 計算兩齒輪的節圓半徑
+rp_g1 = m*n_g1/2
+rp_g2 = m*n_g2/2
+rp_g3 = m*n_g3/2
+rp_g4 = m*n_g4/2
+
+# 繪圖第1齒輪的圓心座標
+x_g1 = 300
+y_g1 = 300
+# 第2齒輪的圓心座標, 假設排列成水平, 表示各齒輪圓心 y 座標相同
+x_g2 = x_g1 
+y_g2 = y_g1 + rp_g1 + rp_g2
+# 第3齒輪的圓心座標
+x_g3 = x_g2 + rp_g2+rp_g3
+y_g3 = y_g1 + rp_g1 + rp_g2
+# 第4齒輪的圓心座標
+x_g4 = x_g1 + rp_g2+rp_g3
+y_g4= y_g1 + rp_g1 + rp_g2+rp_g3+rp_g4
+
+
+# 將第1齒輪順時鐘轉 90 度
+# 使用 ctx.save() 與 ctx.restore() 以確保各齒輪以相對座標進行旋轉繪圖
+ctx.save()
+# translate to the origin of second gear
+ctx.translate(x_g1, y_g1)
+# rotate to engage
+ctx.rotate(pi)
+# put it back
+ctx.translate(-x_g1, -y_g1)
+spur.Spur(ctx).Gear(x_g1, y_g1, rp_g1, n_g1, pa, "blue")
+ctx.restore()
+
+# 將第2齒輪逆時鐘轉 90 度之後, 再多轉一齒, 以便與第1齒輪進行囓合
+ctx.save()
+# translate to the origin of second gear
+ctx.translate(x_g2, y_g2)
+# rotate to engage
+ctx.rotate(-pi/n_g2)
+# put it back
+ctx.translate(-x_g2, -y_g2)
+spur.Spur(ctx).Gear(x_g2, y_g2, rp_g2, n_g2, pa, "black")
+ctx.restore()
+
+# 將第3齒輪逆時鐘轉 90 度之後, 再往回轉第2齒輪定位帶動轉角, 然後再逆時鐘多轉一齒, 以便與第2齒輪進行囓合
+ctx.save()
+# translate to the origin of second gear
+ctx.translate(x_g3, y_g3)
+ctx.rotate(-pi/2-pi/n_g3+(pi/2+pi/n_g2)*n_g2/n_g3)
+# put it back
+ctx.translate(-x_g3, -y_g3)
+spur.Spur(ctx).Gear(x_g3, y_g3, rp_g3, n_g3, pa, "red")
+ctx.restore()
+
+#齒輪4
+ctx.save()
+# translate to the origin of second gear
+ctx.translate(x_g4, y_g4)
+# rotate to engage
+ctx.rotate(-pi/n_g4+(-pi/2+pi/n_g3)*n_g3/n_g4-(pi/2+pi/n_g2)*n_g2/n_g4)
+# put it back
+ctx.translate(-x_g4, -y_g4)
+spur.Spur(ctx).Gear(x_g4, y_g4, rp_g4, n_g4, pa, "pink")
+ctx.restore()
+
+
+# 按照上面三個正齒輪的囓合轉角運算, 隨後的傳動齒輪轉角便可依此類推, 完成6個齒輪的囓合繪圖
+
+&lt;/script&gt;
+&lt;canvas id="plotarea" width="1200" height="1200"&gt;&lt;/canvas&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+'''
+
+    return outstring
+</t>
+<t tx="2015.20150629025624.2"></t>
+<t tx="2015.20150629025624.3">(uncached) 2015.20150629014948.1
+Diff...
+  @cherrypy.expose
+  # N 為齒數, M 為模數, P 為壓力角
+- def mygeartest4(self , M=10, P=15,N1=15, N2=24,N3=15,N4=24 ,N5=15,N6=24):
+?                                                           -------------
++ def mygeartest4(self , M=10, P=15,N1=15, N2=24,N3=15,N4=24):
+      outstring = '''
+  &lt;!DOCTYPE html&gt; 
+  &lt;html&gt;
+  &lt;head&gt;
+  &lt;meta http-equiv="content-type" content="text/html;charset=utf-8"&gt;
+  &lt;!-- 載入 brython.js --&gt;
+  &lt;script type="text/javascript" src="/static/Brython3.1.1-20150328-091302/brython.js"&gt;&lt;/script&gt;
+  &lt;script src="/static/Cango2D.js" type="text/javascript"&gt;&lt;/script&gt;
+  &lt;script src="/static/gearUtils-04.js" type="text/javascript"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;!-- 啟動 brython() --&gt;
+  &lt;body onload="brython()"&gt;
+  &lt;form method=POST action=mygeartest4&gt;
+  模數:&lt;input type=text name=M&gt;&lt;br /&gt;
+  壓力角:&lt;input type=text name=P&gt;&lt;br /&gt;
++ 
+  齒輪1齒數:&lt;select name=N1&gt;
+       &lt;option selected="true"&gt;15&lt;/option&gt;
+       &lt;option&gt;16&lt;/option&gt;
+      &lt;option&gt;17&lt;/option&gt;
+      &lt;option&gt;18&lt;/option&gt;
+      &lt;option&gt;19&lt;/option&gt;
+      &lt;option&gt;20&lt;/option&gt;
+      &lt;option&gt;21&lt;/option&gt;
+      &lt;option&gt;22&lt;/option&gt;
+      &lt;option&gt;23&lt;/option&gt;
+      &lt;option&gt;24&lt;/option&gt;
+      &lt;option&gt;25&lt;/option&gt;
+      &lt;option&gt;26&lt;/option&gt;
+      &lt;option&gt;27&lt;/option&gt;
+      &lt;option&gt;28&lt;/option&gt;
+      &lt;option&gt;29&lt;/option&gt;
+      &lt;option&gt;30&lt;/option&gt;
+      &lt;option&gt;31&lt;/option&gt;
+      &lt;option&gt;32&lt;/option&gt;
+      &lt;option&gt;33&lt;/option&gt;
+      &lt;option&gt;34&lt;/option&gt;
+      &lt;option&gt;35&lt;/option&gt;
+      &lt;option&gt;36&lt;/option&gt;
+      &lt;option&gt;37&lt;/option&gt;
+      &lt;option&gt;38&lt;/option&gt;
+      &lt;option&gt;39&lt;/option&gt;
+      &lt;option&gt;40&lt;/option&gt;
+      &lt;option&gt;41&lt;/option&gt;
+      &lt;option&gt;42&lt;/option&gt;
+      &lt;option&gt;43&lt;/option&gt;
+      &lt;option&gt;44&lt;/option&gt;
+      &lt;option&gt;45&lt;/option&gt;
+      &lt;option&gt;46&lt;/option&gt;
+      &lt;option&gt;47&lt;/option&gt;
+      &lt;option&gt;48&lt;/option&gt;
+      &lt;option&gt;49&lt;/option&gt;
+      &lt;option&gt;50&lt;/option&gt;
+      &lt;option&gt;51&lt;/option&gt;
+      &lt;option&gt;52&lt;/option&gt;
+      &lt;option&gt;53&lt;/option&gt;
+      &lt;option&gt;54&lt;/option&gt;
+      &lt;option&gt;55&lt;/option&gt;
+      &lt;option&gt;56&lt;/option&gt;
+      &lt;option&gt;57&lt;/option&gt;
+      &lt;option&gt;58&lt;/option&gt;
+      &lt;option&gt;59&lt;/option&gt;
+      &lt;option&gt;60&lt;/option&gt;
+      &lt;option&gt;61&lt;/option&gt;
+      &lt;option&gt;62&lt;/option&gt;
+      &lt;option&gt;63&lt;/option&gt;
+      &lt;option&gt;64&lt;/option&gt;
+      &lt;option&gt;65&lt;/option&gt;
+      &lt;option&gt;66&lt;/option&gt;
+      &lt;option&gt;67&lt;/option&gt;
+      &lt;option&gt;68&lt;/option&gt;
+      &lt;option&gt;69&lt;/option&gt;
+      &lt;option&gt;70&lt;/option&gt;
+      &lt;option&gt;71&lt;/option&gt;
+      &lt;option&gt;72&lt;/option&gt;
+      &lt;option&gt;73&lt;/option&gt;
+      &lt;option&gt;74&lt;/option&gt;
+      &lt;option&gt;75&lt;/option&gt;
+      &lt;option&gt;76&lt;/option&gt;
+      &lt;option&gt;77&lt;/option&gt;
+      &lt;option&gt;78&lt;/option&gt;
+      &lt;option&gt;79&lt;/option&gt;
+      &lt;option&gt;80&lt;/option&gt;
+      &lt;/select&gt;
+  
+  齒輪2齒數:&lt;select name=N2&gt;
+       &lt;option&gt;15&lt;/option&gt;
+       &lt;option&gt;16&lt;/option&gt;
+      &lt;option&gt;17&lt;/option&gt;
+      &lt;option&gt;18&lt;/option&gt;
+      &lt;option&gt;19&lt;/option&gt;
+      &lt;option&gt;20&lt;/option&gt;
+      &lt;option&gt;21&lt;/option&gt;
+      &lt;option&gt;22&lt;/option&gt;
+      &lt;option&gt;23&lt;/option&gt;
+       &lt;option selected="true"&gt;24&lt;/option&gt;
+      &lt;option&gt;25&lt;/option&gt;
+      &lt;option&gt;26&lt;/option&gt;
+      &lt;option&gt;27&lt;/option&gt;
+      &lt;option&gt;28&lt;/option&gt;
+      &lt;option&gt;29&lt;/option&gt;
+      &lt;option&gt;30&lt;/option&gt;
+      &lt;option&gt;31&lt;/option&gt;
+      &lt;option&gt;32&lt;/option&gt;
+      &lt;option&gt;33&lt;/option&gt;
+      &lt;option&gt;34&lt;/option&gt;
+      &lt;option&gt;35&lt;/option&gt;
+      &lt;option&gt;36&lt;/option&gt;
+      &lt;option&gt;37&lt;/option&gt;
+      &lt;option&gt;38&lt;/option&gt;
+      &lt;option&gt;39&lt;/option&gt;
+      &lt;option&gt;40&lt;/option&gt;
+      &lt;option&gt;41&lt;/option&gt;
+      &lt;option&gt;42&lt;/option&gt;
+      &lt;option&gt;43&lt;/option&gt;
+      &lt;option&gt;44&lt;/option&gt;
+      &lt;option&gt;45&lt;/option&gt;
+      &lt;option&gt;46&lt;/option&gt;
+      &lt;option&gt;47&lt;/option&gt;
+      &lt;option&gt;48&lt;/option&gt;
+      &lt;option&gt;49&lt;/option&gt;
+      &lt;option&gt;50&lt;/option&gt;
+      &lt;option&gt;51&lt;/option&gt;
+      &lt;option&gt;52&lt;/option&gt;
+      &lt;option&gt;53&lt;/option&gt;
+      &lt;option&gt;54&lt;/option&gt;
+      &lt;option&gt;55&lt;/option&gt;
+      &lt;option&gt;56&lt;/option&gt;
+      &lt;option&gt;57&lt;/option&gt;
+      &lt;option&gt;58&lt;/option&gt;
+      &lt;option&gt;59&lt;/option&gt;
+      &lt;option&gt;60&lt;/option&gt;
+      &lt;option&gt;61&lt;/option&gt;
+      &lt;option&gt;62&lt;/option&gt;
+      &lt;option&gt;63&lt;/option&gt;
+      &lt;option&gt;64&lt;/option&gt;
+      &lt;option&gt;65&lt;/option&gt;
+      &lt;option&gt;66&lt;/option&gt;
+      &lt;option&gt;67&lt;/option&gt;
+      &lt;option&gt;68&lt;/option&gt;
+      &lt;option&gt;69&lt;/option&gt;
+      &lt;option&gt;70&lt;/option&gt;
+      &lt;option&gt;71&lt;/option&gt;
+      &lt;option&gt;72&lt;/option&gt;
+      &lt;option&gt;73&lt;/option&gt;
+      &lt;option&gt;74&lt;/option&gt;
+      &lt;option&gt;75&lt;/option&gt;
+      &lt;option&gt;76&lt;/option&gt;
+      &lt;option&gt;77&lt;/option&gt;
+      &lt;option&gt;78&lt;/option&gt;
+      &lt;option&gt;79&lt;/option&gt;
+      &lt;option&gt;80&lt;/option&gt;
+      &lt;/select&gt;
++     
+  齒輪3齒數:&lt;select name=N3&gt;
+       &lt;option selected="true"&gt;15&lt;/option&gt;
+       &lt;option&gt;16&lt;/option&gt;
+      &lt;option&gt;17&lt;/option&gt;
+      &lt;option&gt;18&lt;/option&gt;
+      &lt;option&gt;19&lt;/option&gt;
+      &lt;option&gt;20&lt;/option&gt;
+      &lt;option&gt;21&lt;/option&gt;
+      &lt;option&gt;22&lt;/option&gt;
+      &lt;option&gt;23&lt;/option&gt;
+      &lt;option&gt;24&lt;/option&gt;
+      &lt;option&gt;25&lt;/option&gt;
+      &lt;option&gt;26&lt;/option&gt;
+      &lt;option&gt;27&lt;/option&gt;
+      &lt;option&gt;28&lt;/option&gt;
+      &lt;option&gt;29&lt;/option&gt;
+      &lt;option&gt;30&lt;/option&gt;
+      &lt;option&gt;31&lt;/option&gt;
+      &lt;option&gt;32&lt;/option&gt;
+      &lt;option&gt;33&lt;/option&gt;
+      &lt;option&gt;34&lt;/option&gt;
+      &lt;option&gt;35&lt;/option&gt;
+      &lt;option&gt;36&lt;/option&gt;
+      &lt;option&gt;37&lt;/option&gt;
+      &lt;option&gt;38&lt;/option&gt;
+      &lt;option&gt;39&lt;/option&gt;
+      &lt;option&gt;40&lt;/option&gt;
+      &lt;option&gt;41&lt;/option&gt;
+      &lt;option&gt;42&lt;/option&gt;
+      &lt;option&gt;43&lt;/option&gt;
+      &lt;option&gt;44&lt;/option&gt;
+      &lt;option&gt;45&lt;/option&gt;
+      &lt;option&gt;46&lt;/option&gt;
+      &lt;option&gt;47&lt;/option&gt;
+      &lt;option&gt;48&lt;/option&gt;
+      &lt;option&gt;49&lt;/option&gt;
+      &lt;option&gt;50&lt;/option&gt;
+      &lt;option&gt;51&lt;/option&gt;
+      &lt;option&gt;52&lt;/option&gt;
+      &lt;option&gt;53&lt;/option&gt;
+      &lt;option&gt;54&lt;/option&gt;
+      &lt;option&gt;55&lt;/option&gt;
+      &lt;option&gt;56&lt;/option&gt;
+      &lt;option&gt;57&lt;/option&gt;
+      &lt;option&gt;58&lt;/option&gt;
+      &lt;option&gt;59&lt;/option&gt;
+      &lt;option&gt;60&lt;/option&gt;
+      &lt;option&gt;61&lt;/option&gt;
+      &lt;option&gt;62&lt;/option&gt;
+      &lt;option&gt;63&lt;/option&gt;
+      &lt;option&gt;64&lt;/option&gt;
+      &lt;option&gt;65&lt;/option&gt;
+      &lt;option&gt;66&lt;/option&gt;
+      &lt;option&gt;67&lt;/option&gt;
+      &lt;option&gt;68&lt;/option&gt;
+      &lt;option&gt;69&lt;/option&gt;
+      &lt;option&gt;70&lt;/option&gt;
+      &lt;option&gt;71&lt;/option&gt;
+      &lt;option&gt;72&lt;/option&gt;
+      &lt;option&gt;73&lt;/option&gt;
+      &lt;option&gt;74&lt;/option&gt;
+      &lt;option&gt;75&lt;/option&gt;
+      &lt;option&gt;76&lt;/option&gt;
+      &lt;option&gt;77&lt;/option&gt;
+      &lt;option&gt;78&lt;/option&gt;
+      &lt;option&gt;79&lt;/option&gt;
+      &lt;option&gt;80&lt;/option&gt;
+      &lt;/select&gt;
+  齒輪4齒數:&lt;select name=N4&gt;
+       &lt;option&gt;15&lt;/option&gt;
+       &lt;option&gt;16&lt;/option&gt;
+      &lt;option&gt;17&lt;/option&gt;
+      &lt;option&gt;18&lt;/option&gt;
+      &lt;option&gt;19&lt;/option&gt;
+      &lt;option&gt;20&lt;/option&gt;
+      &lt;option&gt;21&lt;/option&gt;
+      &lt;option&gt;22&lt;/option&gt;
+      &lt;option&gt;23&lt;/option&gt;
+       &lt;option selected="true"&gt;24&lt;/option&gt;
+      &lt;option&gt;25&lt;/option&gt;
+      &lt;option&gt;26&lt;/option&gt;
+      &lt;option&gt;27&lt;/option&gt;
+      &lt;option&gt;28&lt;/option&gt;
+      &lt;option&gt;29&lt;/option&gt;
+      &lt;option&gt;30&lt;/option&gt;
+      &lt;option&gt;31&lt;/option&gt;
+      &lt;option&gt;32&lt;/option&gt;
+      &lt;option&gt;33&lt;/option&gt;
+      &lt;option&gt;34&lt;/option&gt;
+      &lt;option&gt;35&lt;/option&gt;
+      &lt;option&gt;36&lt;/option&gt;
+      &lt;option&gt;37&lt;/option&gt;
+      &lt;option&gt;38&lt;/option&gt;
+      &lt;option&gt;39&lt;/option&gt;
+      &lt;option&gt;40&lt;/option&gt;
+      &lt;option&gt;41&lt;/option&gt;
+      &lt;option&gt;42&lt;/option&gt;
+      &lt;option&gt;43&lt;/option&gt;
+      &lt;option&gt;44&lt;/option&gt;
+      &lt;option&gt;45&lt;/option&gt;
+      &lt;option&gt;46&lt;/option&gt;
+      &lt;option&gt;47&lt;/option&gt;
+      &lt;option&gt;48&lt;/option&gt;
+      &lt;option&gt;49&lt;/option&gt;
+      &lt;option&gt;50&lt;/option&gt;
+      &lt;option&gt;51&lt;/option&gt;
+      &lt;option&gt;52&lt;/option&gt;
+      &lt;option&gt;53&lt;/option&gt;
+      &lt;option&gt;54&lt;/option&gt;
+      &lt;option&gt;55&lt;/option&gt;
+      &lt;option&gt;56&lt;/option&gt;
+      &lt;option&gt;57&lt;/option&gt;
+      &lt;option&gt;58&lt;/option&gt;
+      &lt;option&gt;59&lt;/option&gt;
+      &lt;option&gt;60&lt;/option&gt;
+      &lt;option&gt;61&lt;/option&gt;
+      &lt;option&gt;62&lt;/option&gt;
+      &lt;option&gt;63&lt;/option&gt;
+      &lt;option&gt;64&lt;/option&gt;
+      &lt;option&gt;65&lt;/option&gt;
+      &lt;option&gt;66&lt;/option&gt;
+      &lt;option&gt;67&lt;/option&gt;
+      &lt;option&gt;68&lt;/option&gt;
+      &lt;option&gt;69&lt;/option&gt;
+      &lt;option&gt;70&lt;/option&gt;
+      &lt;option&gt;71&lt;/option&gt;
+      &lt;option&gt;72&lt;/option&gt;
+      &lt;option&gt;73&lt;/option&gt;
+      &lt;option&gt;74&lt;/option&gt;
+      &lt;option&gt;75&lt;/option&gt;
+      &lt;option&gt;76&lt;/option&gt;
+      &lt;option&gt;77&lt;/option&gt;
+      &lt;option&gt;78&lt;/option&gt;
+      &lt;option&gt;79&lt;/option&gt;
+      &lt;option&gt;80&lt;/option&gt;
+      &lt;/select&gt;
+  
+  
+  &lt;!-- 以下為 canvas 畫圖程式 --&gt;
+  &lt;script type="text/python"&gt;
+  # 從 browser 導入 document
+  from browser import document
+  from math import *
+  # 請注意, 這裡導入位於 Lib/site-packages 目錄下的 spur.py 檔案
+  import spur
+  
+  # 準備在 id="plotarea" 的 canvas 中繪圖
+  canvas = document["plotarea"]
+  ctx = canvas.getContext("2d")
+  
+  # 以下利用 spur.py 程式進行繪圖, 接下來的協同設計運算必須要配合使用者的需求進行設計運算與繪圖
+  # 其中並將工作分配給其他組員建立類似 spur.py 的相關零件繪圖模組
+  # midx, midy 為齒輪圓心座標, rp 為節圓半徑, n 為齒數, pa 為壓力角, color 為線的顏色
+  # Gear(midx, midy, rp, n=20, pa=20, color="black"):
+  # 模數決定齒的尺寸大小, 囓合齒輪組必須有相同的模數與壓力角
+  # 壓力角 pa 單位為角度
+  pa ='''+str(P)+'''
+  # m 為模數
+  m = '''+str(M)+'''
+  # 第1齒輪齒數
+  n_g1 = '''+str(N1)+'''
+  # 第2齒輪齒數
+  n_g2 = '''+str(N2)+'''
+  # 第3齒輪齒數
+  n_g3 = '''+str(N3)+'''
+  # 第4齒輪齒數
+  n_g4 = '''+str(N4)+'''
+  
+  
+  # 計算兩齒輪的節圓半徑
+  rp_g1 = m*n_g1/2
+  rp_g2 = m*n_g2/2
+  rp_g3 = m*n_g3/2
+  rp_g4 = m*n_g4/2
+  
+  # 繪圖第1齒輪的圓心座標
+  x_g1 = 300
+  y_g1 = 300
+  # 第2齒輪的圓心座標, 假設排列成水平, 表示各齒輪圓心 y 座標相同
+  x_g2 = x_g1 
+  y_g2 = y_g1 + rp_g1 + rp_g2
+  # 第3齒輪的圓心座標
+  x_g3 = x_g2 + rp_g2+rp_g3
+  y_g3 = y_g1 + rp_g1 + rp_g2
+  # 第4齒輪的圓心座標
+  x_g4 = x_g1 + rp_g2+rp_g3
+  y_g4= y_g1 + rp_g1 + rp_g2+rp_g3+rp_g4
+  
+  
+  # 將第1齒輪順時鐘轉 90 度
+  # 使用 ctx.save() 與 ctx.restore() 以確保各齒輪以相對座標進行旋轉繪圖
+  ctx.save()
+  # translate to the origin of second gear
+  ctx.translate(x_g1, y_g1)
+  # rotate to engage
+  ctx.rotate(pi)
+  # put it back
+  ctx.translate(-x_g1, -y_g1)
+  spur.Spur(ctx).Gear(x_g1, y_g1, rp_g1, n_g1, pa, "blue")
+  ctx.restore()
+  
+  # 將第2齒輪逆時鐘轉 90 度之後, 再多轉一齒, 以便與第1齒輪進行囓合
+  ctx.save()
+  # translate to the origin of second gear
+  ctx.translate(x_g2, y_g2)
+  # rotate to engage
+  ctx.rotate(-pi/n_g2)
+  # put it back
+  ctx.translate(-x_g2, -y_g2)
+  spur.Spur(ctx).Gear(x_g2, y_g2, rp_g2, n_g2, pa, "black")
+  ctx.restore()
+  
+  # 將第3齒輪逆時鐘轉 90 度之後, 再往回轉第2齒輪定位帶動轉角, 然後再逆時鐘多轉一齒, 以便與第2齒輪進行囓合
+  ctx.save()
+  # translate to the origin of second gear
+  ctx.translate(x_g3, y_g3)
+  ctx.rotate(-pi/2-pi/n_g3+(pi/2+pi/n_g2)*n_g2/n_g3)
+  # put it back
+  ctx.translate(-x_g3, -y_g3)
+  spur.Spur(ctx).Gear(x_g3, y_g3, rp_g3, n_g3, pa, "red")
+  ctx.restore()
+  
+  #齒輪4
+  ctx.save()
+  # translate to the origin of second gear
+  ctx.translate(x_g4, y_g4)
+  # rotate to engage
+  ctx.rotate(-pi/n_g4+(-pi/2+pi/n_g3)*n_g3/n_g4-(pi/2+pi/n_g2)*n_g2/n_g4)
+  # put it back
+  ctx.translate(-x_g4, -y_g4)
+  spur.Spur(ctx).Gear(x_g4, y_g4, rp_g4, n_g4, pa, "pink")
+  ctx.restore()
+  
+  
+  # 按照上面三個正齒輪的囓合轉角運算, 隨後的傳動齒輪轉角便可依此類推, 完成6個齒輪的囓合繪圖
+  
+  &lt;/script&gt;
+  &lt;canvas id="plotarea" width="1200" height="1200"&gt;&lt;/canvas&gt;
+  &lt;/body&gt;
+  &lt;/html&gt;
+  '''
+  
+      return outstring
+</t>
+<t tx="2015.20150629025624.4">@cherrypy.expose
+# N 為齒數, M 為模數, P 為壓力角
 def mygeartest4(self , M=10, P=15,N1=15, N2=24,N3=15,N4=24):
     outstring = '''
 &lt;!DOCTYPE html&gt; 
@@ -1695,6 +2506,405 @@ def mygeartest4(self , M=10, P=15,N1=15, N2=24,N3=15,N4=24):
     &lt;option&gt;80&lt;/option&gt;
     &lt;/select&gt;
     
+齒輪3齒數:&lt;select name=N3&gt;
+     &lt;option selected="true"&gt;15&lt;/option&gt;
+     &lt;option&gt;16&lt;/option&gt;
+    &lt;option&gt;17&lt;/option&gt;
+    &lt;option&gt;18&lt;/option&gt;
+    &lt;option&gt;19&lt;/option&gt;
+    &lt;option&gt;20&lt;/option&gt;
+    &lt;option&gt;21&lt;/option&gt;
+    &lt;option&gt;22&lt;/option&gt;
+    &lt;option&gt;23&lt;/option&gt;
+    &lt;option&gt;24&lt;/option&gt;
+    &lt;option&gt;25&lt;/option&gt;
+    &lt;option&gt;26&lt;/option&gt;
+    &lt;option&gt;27&lt;/option&gt;
+    &lt;option&gt;28&lt;/option&gt;
+    &lt;option&gt;29&lt;/option&gt;
+    &lt;option&gt;30&lt;/option&gt;
+    &lt;option&gt;31&lt;/option&gt;
+    &lt;option&gt;32&lt;/option&gt;
+    &lt;option&gt;33&lt;/option&gt;
+    &lt;option&gt;34&lt;/option&gt;
+    &lt;option&gt;35&lt;/option&gt;
+    &lt;option&gt;36&lt;/option&gt;
+    &lt;option&gt;37&lt;/option&gt;
+    &lt;option&gt;38&lt;/option&gt;
+    &lt;option&gt;39&lt;/option&gt;
+    &lt;option&gt;40&lt;/option&gt;
+    &lt;option&gt;41&lt;/option&gt;
+    &lt;option&gt;42&lt;/option&gt;
+    &lt;option&gt;43&lt;/option&gt;
+    &lt;option&gt;44&lt;/option&gt;
+    &lt;option&gt;45&lt;/option&gt;
+    &lt;option&gt;46&lt;/option&gt;
+    &lt;option&gt;47&lt;/option&gt;
+    &lt;option&gt;48&lt;/option&gt;
+    &lt;option&gt;49&lt;/option&gt;
+    &lt;option&gt;50&lt;/option&gt;
+    &lt;option&gt;51&lt;/option&gt;
+    &lt;option&gt;52&lt;/option&gt;
+    &lt;option&gt;53&lt;/option&gt;
+    &lt;option&gt;54&lt;/option&gt;
+    &lt;option&gt;55&lt;/option&gt;
+    &lt;option&gt;56&lt;/option&gt;
+    &lt;option&gt;57&lt;/option&gt;
+    &lt;option&gt;58&lt;/option&gt;
+    &lt;option&gt;59&lt;/option&gt;
+    &lt;option&gt;60&lt;/option&gt;
+    &lt;option&gt;61&lt;/option&gt;
+    &lt;option&gt;62&lt;/option&gt;
+    &lt;option&gt;63&lt;/option&gt;
+    &lt;option&gt;64&lt;/option&gt;
+    &lt;option&gt;65&lt;/option&gt;
+    &lt;option&gt;66&lt;/option&gt;
+    &lt;option&gt;67&lt;/option&gt;
+    &lt;option&gt;68&lt;/option&gt;
+    &lt;option&gt;69&lt;/option&gt;
+    &lt;option&gt;70&lt;/option&gt;
+    &lt;option&gt;71&lt;/option&gt;
+    &lt;option&gt;72&lt;/option&gt;
+    &lt;option&gt;73&lt;/option&gt;
+    &lt;option&gt;74&lt;/option&gt;
+    &lt;option&gt;75&lt;/option&gt;
+    &lt;option&gt;76&lt;/option&gt;
+    &lt;option&gt;77&lt;/option&gt;
+    &lt;option&gt;78&lt;/option&gt;
+    &lt;option&gt;79&lt;/option&gt;
+    &lt;option&gt;80&lt;/option&gt;
+    &lt;/select&gt;
+齒輪4齒數:&lt;select name=N4&gt;
+     &lt;option&gt;15&lt;/option&gt;
+     &lt;option&gt;16&lt;/option&gt;
+    &lt;option&gt;17&lt;/option&gt;
+    &lt;option&gt;18&lt;/option&gt;
+    &lt;option&gt;19&lt;/option&gt;
+    &lt;option&gt;20&lt;/option&gt;
+    &lt;option&gt;21&lt;/option&gt;
+    &lt;option&gt;22&lt;/option&gt;
+    &lt;option&gt;23&lt;/option&gt;
+     &lt;option selected="true"&gt;24&lt;/option&gt;
+    &lt;option&gt;25&lt;/option&gt;
+    &lt;option&gt;26&lt;/option&gt;
+    &lt;option&gt;27&lt;/option&gt;
+    &lt;option&gt;28&lt;/option&gt;
+    &lt;option&gt;29&lt;/option&gt;
+    &lt;option&gt;30&lt;/option&gt;
+    &lt;option&gt;31&lt;/option&gt;
+    &lt;option&gt;32&lt;/option&gt;
+    &lt;option&gt;33&lt;/option&gt;
+    &lt;option&gt;34&lt;/option&gt;
+    &lt;option&gt;35&lt;/option&gt;
+    &lt;option&gt;36&lt;/option&gt;
+    &lt;option&gt;37&lt;/option&gt;
+    &lt;option&gt;38&lt;/option&gt;
+    &lt;option&gt;39&lt;/option&gt;
+    &lt;option&gt;40&lt;/option&gt;
+    &lt;option&gt;41&lt;/option&gt;
+    &lt;option&gt;42&lt;/option&gt;
+    &lt;option&gt;43&lt;/option&gt;
+    &lt;option&gt;44&lt;/option&gt;
+    &lt;option&gt;45&lt;/option&gt;
+    &lt;option&gt;46&lt;/option&gt;
+    &lt;option&gt;47&lt;/option&gt;
+    &lt;option&gt;48&lt;/option&gt;
+    &lt;option&gt;49&lt;/option&gt;
+    &lt;option&gt;50&lt;/option&gt;
+    &lt;option&gt;51&lt;/option&gt;
+    &lt;option&gt;52&lt;/option&gt;
+    &lt;option&gt;53&lt;/option&gt;
+    &lt;option&gt;54&lt;/option&gt;
+    &lt;option&gt;55&lt;/option&gt;
+    &lt;option&gt;56&lt;/option&gt;
+    &lt;option&gt;57&lt;/option&gt;
+    &lt;option&gt;58&lt;/option&gt;
+    &lt;option&gt;59&lt;/option&gt;
+    &lt;option&gt;60&lt;/option&gt;
+    &lt;option&gt;61&lt;/option&gt;
+    &lt;option&gt;62&lt;/option&gt;
+    &lt;option&gt;63&lt;/option&gt;
+    &lt;option&gt;64&lt;/option&gt;
+    &lt;option&gt;65&lt;/option&gt;
+    &lt;option&gt;66&lt;/option&gt;
+    &lt;option&gt;67&lt;/option&gt;
+    &lt;option&gt;68&lt;/option&gt;
+    &lt;option&gt;69&lt;/option&gt;
+    &lt;option&gt;70&lt;/option&gt;
+    &lt;option&gt;71&lt;/option&gt;
+    &lt;option&gt;72&lt;/option&gt;
+    &lt;option&gt;73&lt;/option&gt;
+    &lt;option&gt;74&lt;/option&gt;
+    &lt;option&gt;75&lt;/option&gt;
+    &lt;option&gt;76&lt;/option&gt;
+    &lt;option&gt;77&lt;/option&gt;
+    &lt;option&gt;78&lt;/option&gt;
+    &lt;option&gt;79&lt;/option&gt;
+    &lt;option&gt;80&lt;/option&gt;
+    &lt;/select&gt;
+
+
+&lt;!-- 以下為 canvas 畫圖程式 --&gt;
+&lt;script type="text/python"&gt;
+# 從 browser 導入 document
+from browser import document
+from math import *
+# 請注意, 這裡導入位於 Lib/site-packages 目錄下的 spur.py 檔案
+import spur
+
+# 準備在 id="plotarea" 的 canvas 中繪圖
+canvas = document["plotarea"]
+ctx = canvas.getContext("2d")
+
+# 以下利用 spur.py 程式進行繪圖, 接下來的協同設計運算必須要配合使用者的需求進行設計運算與繪圖
+# 其中並將工作分配給其他組員建立類似 spur.py 的相關零件繪圖模組
+# midx, midy 為齒輪圓心座標, rp 為節圓半徑, n 為齒數, pa 為壓力角, color 為線的顏色
+# Gear(midx, midy, rp, n=20, pa=20, color="black"):
+# 模數決定齒的尺寸大小, 囓合齒輪組必須有相同的模數與壓力角
+# 壓力角 pa 單位為角度
+pa ='''+str(P)+'''
+# m 為模數
+m = '''+str(M)+'''
+# 第1齒輪齒數
+n_g1 = '''+str(N1)+'''
+# 第2齒輪齒數
+n_g2 = '''+str(N2)+'''
+# 第3齒輪齒數
+n_g3 = '''+str(N3)+'''
+# 第4齒輪齒數
+n_g4 = '''+str(N4)+'''
+
+
+# 計算兩齒輪的節圓半徑
+rp_g1 = m*n_g1/2
+rp_g2 = m*n_g2/2
+rp_g3 = m*n_g3/2
+rp_g4 = m*n_g4/2
+
+# 繪圖第1齒輪的圓心座標
+x_g1 = 300
+y_g1 = 300
+# 第2齒輪的圓心座標, 假設排列成水平, 表示各齒輪圓心 y 座標相同
+x_g2 = x_g1 
+y_g2 = y_g1 + rp_g1 + rp_g2
+# 第3齒輪的圓心座標
+x_g3 = x_g2 + rp_g2+rp_g3
+y_g3 = y_g1 + rp_g1 + rp_g2
+# 第4齒輪的圓心座標
+x_g4 = x_g1 + rp_g2+rp_g3
+y_g4= y_g1 + rp_g1 + rp_g2+rp_g3+rp_g4
+
+
+# 將第1齒輪順時鐘轉 90 度
+# 使用 ctx.save() 與 ctx.restore() 以確保各齒輪以相對座標進行旋轉繪圖
+ctx.save()
+# translate to the origin of second gear
+ctx.translate(x_g1, y_g1)
+# rotate to engage
+ctx.rotate(pi)
+# put it back
+ctx.translate(-x_g1, -y_g1)
+spur.Spur(ctx).Gear(x_g1, y_g1, rp_g1, n_g1, pa, "blue")
+ctx.restore()
+
+# 將第2齒輪逆時鐘轉 90 度之後, 再多轉一齒, 以便與第1齒輪進行囓合
+ctx.save()
+# translate to the origin of second gear
+ctx.translate(x_g2, y_g2)
+# rotate to engage
+ctx.rotate(-pi/n_g2)
+# put it back
+ctx.translate(-x_g2, -y_g2)
+spur.Spur(ctx).Gear(x_g2, y_g2, rp_g2, n_g2, pa, "black")
+ctx.restore()
+
+# 將第3齒輪逆時鐘轉 90 度之後, 再往回轉第2齒輪定位帶動轉角, 然後再逆時鐘多轉一齒, 以便與第2齒輪進行囓合
+ctx.save()
+# translate to the origin of second gear
+ctx.translate(x_g3, y_g3)
+ctx.rotate(-pi/2-pi/n_g3+(pi/2+pi/n_g2)*n_g2/n_g3)
+# put it back
+ctx.translate(-x_g3, -y_g3)
+spur.Spur(ctx).Gear(x_g3, y_g3, rp_g3, n_g3, pa, "red")
+ctx.restore()
+
+#齒輪4
+ctx.save()
+# translate to the origin of second gear
+ctx.translate(x_g4, y_g4)
+# rotate to engage
+ctx.rotate(-pi/n_g4+(-pi/2+pi/n_g3)*n_g3/n_g4-(pi/2+pi/n_g2)*n_g2/n_g4)
+# put it back
+ctx.translate(-x_g4, -y_g4)
+spur.Spur(ctx).Gear(x_g4, y_g4, rp_g4, n_g4, pa, "pink")
+ctx.restore()
+
+
+# 按照上面三個正齒輪的囓合轉角運算, 隨後的傳動齒輪轉角便可依此類推, 完成6個齒輪的囓合繪圖
+
+&lt;/script&gt;
+&lt;canvas id="plotarea" width="1200" height="1200"&gt;&lt;/canvas&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+'''
+
+    return outstring
+</t>
+<t tx="2015.20150629025624.5">@cherrypy.expose
+# N 為齒數, M 為模數, P 為壓力角
+def mygeartest4(self , M=10, P=15,N1=15, N2=24,N3=15,N4=24 ,N5=15,N6=24):
+    outstring = '''
+&lt;!DOCTYPE html&gt; 
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="content-type" content="text/html;charset=utf-8"&gt;
+&lt;!-- 載入 brython.js --&gt;
+&lt;script type="text/javascript" src="/static/Brython3.1.1-20150328-091302/brython.js"&gt;&lt;/script&gt;
+&lt;script src="/static/Cango2D.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;script src="/static/gearUtils-04.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;!-- 啟動 brython() --&gt;
+&lt;body onload="brython()"&gt;
+&lt;form method=POST action=mygeartest4&gt;
+模數:&lt;input type=text name=M&gt;&lt;br /&gt;
+壓力角:&lt;input type=text name=P&gt;&lt;br /&gt;
+齒輪1齒數:&lt;select name=N1&gt;
+     &lt;option selected="true"&gt;15&lt;/option&gt;
+     &lt;option&gt;16&lt;/option&gt;
+    &lt;option&gt;17&lt;/option&gt;
+    &lt;option&gt;18&lt;/option&gt;
+    &lt;option&gt;19&lt;/option&gt;
+    &lt;option&gt;20&lt;/option&gt;
+    &lt;option&gt;21&lt;/option&gt;
+    &lt;option&gt;22&lt;/option&gt;
+    &lt;option&gt;23&lt;/option&gt;
+    &lt;option&gt;24&lt;/option&gt;
+    &lt;option&gt;25&lt;/option&gt;
+    &lt;option&gt;26&lt;/option&gt;
+    &lt;option&gt;27&lt;/option&gt;
+    &lt;option&gt;28&lt;/option&gt;
+    &lt;option&gt;29&lt;/option&gt;
+    &lt;option&gt;30&lt;/option&gt;
+    &lt;option&gt;31&lt;/option&gt;
+    &lt;option&gt;32&lt;/option&gt;
+    &lt;option&gt;33&lt;/option&gt;
+    &lt;option&gt;34&lt;/option&gt;
+    &lt;option&gt;35&lt;/option&gt;
+    &lt;option&gt;36&lt;/option&gt;
+    &lt;option&gt;37&lt;/option&gt;
+    &lt;option&gt;38&lt;/option&gt;
+    &lt;option&gt;39&lt;/option&gt;
+    &lt;option&gt;40&lt;/option&gt;
+    &lt;option&gt;41&lt;/option&gt;
+    &lt;option&gt;42&lt;/option&gt;
+    &lt;option&gt;43&lt;/option&gt;
+    &lt;option&gt;44&lt;/option&gt;
+    &lt;option&gt;45&lt;/option&gt;
+    &lt;option&gt;46&lt;/option&gt;
+    &lt;option&gt;47&lt;/option&gt;
+    &lt;option&gt;48&lt;/option&gt;
+    &lt;option&gt;49&lt;/option&gt;
+    &lt;option&gt;50&lt;/option&gt;
+    &lt;option&gt;51&lt;/option&gt;
+    &lt;option&gt;52&lt;/option&gt;
+    &lt;option&gt;53&lt;/option&gt;
+    &lt;option&gt;54&lt;/option&gt;
+    &lt;option&gt;55&lt;/option&gt;
+    &lt;option&gt;56&lt;/option&gt;
+    &lt;option&gt;57&lt;/option&gt;
+    &lt;option&gt;58&lt;/option&gt;
+    &lt;option&gt;59&lt;/option&gt;
+    &lt;option&gt;60&lt;/option&gt;
+    &lt;option&gt;61&lt;/option&gt;
+    &lt;option&gt;62&lt;/option&gt;
+    &lt;option&gt;63&lt;/option&gt;
+    &lt;option&gt;64&lt;/option&gt;
+    &lt;option&gt;65&lt;/option&gt;
+    &lt;option&gt;66&lt;/option&gt;
+    &lt;option&gt;67&lt;/option&gt;
+    &lt;option&gt;68&lt;/option&gt;
+    &lt;option&gt;69&lt;/option&gt;
+    &lt;option&gt;70&lt;/option&gt;
+    &lt;option&gt;71&lt;/option&gt;
+    &lt;option&gt;72&lt;/option&gt;
+    &lt;option&gt;73&lt;/option&gt;
+    &lt;option&gt;74&lt;/option&gt;
+    &lt;option&gt;75&lt;/option&gt;
+    &lt;option&gt;76&lt;/option&gt;
+    &lt;option&gt;77&lt;/option&gt;
+    &lt;option&gt;78&lt;/option&gt;
+    &lt;option&gt;79&lt;/option&gt;
+    &lt;option&gt;80&lt;/option&gt;
+    &lt;/select&gt;
+
+齒輪2齒數:&lt;select name=N2&gt;
+     &lt;option&gt;15&lt;/option&gt;
+     &lt;option&gt;16&lt;/option&gt;
+    &lt;option&gt;17&lt;/option&gt;
+    &lt;option&gt;18&lt;/option&gt;
+    &lt;option&gt;19&lt;/option&gt;
+    &lt;option&gt;20&lt;/option&gt;
+    &lt;option&gt;21&lt;/option&gt;
+    &lt;option&gt;22&lt;/option&gt;
+    &lt;option&gt;23&lt;/option&gt;
+     &lt;option selected="true"&gt;24&lt;/option&gt;
+    &lt;option&gt;25&lt;/option&gt;
+    &lt;option&gt;26&lt;/option&gt;
+    &lt;option&gt;27&lt;/option&gt;
+    &lt;option&gt;28&lt;/option&gt;
+    &lt;option&gt;29&lt;/option&gt;
+    &lt;option&gt;30&lt;/option&gt;
+    &lt;option&gt;31&lt;/option&gt;
+    &lt;option&gt;32&lt;/option&gt;
+    &lt;option&gt;33&lt;/option&gt;
+    &lt;option&gt;34&lt;/option&gt;
+    &lt;option&gt;35&lt;/option&gt;
+    &lt;option&gt;36&lt;/option&gt;
+    &lt;option&gt;37&lt;/option&gt;
+    &lt;option&gt;38&lt;/option&gt;
+    &lt;option&gt;39&lt;/option&gt;
+    &lt;option&gt;40&lt;/option&gt;
+    &lt;option&gt;41&lt;/option&gt;
+    &lt;option&gt;42&lt;/option&gt;
+    &lt;option&gt;43&lt;/option&gt;
+    &lt;option&gt;44&lt;/option&gt;
+    &lt;option&gt;45&lt;/option&gt;
+    &lt;option&gt;46&lt;/option&gt;
+    &lt;option&gt;47&lt;/option&gt;
+    &lt;option&gt;48&lt;/option&gt;
+    &lt;option&gt;49&lt;/option&gt;
+    &lt;option&gt;50&lt;/option&gt;
+    &lt;option&gt;51&lt;/option&gt;
+    &lt;option&gt;52&lt;/option&gt;
+    &lt;option&gt;53&lt;/option&gt;
+    &lt;option&gt;54&lt;/option&gt;
+    &lt;option&gt;55&lt;/option&gt;
+    &lt;option&gt;56&lt;/option&gt;
+    &lt;option&gt;57&lt;/option&gt;
+    &lt;option&gt;58&lt;/option&gt;
+    &lt;option&gt;59&lt;/option&gt;
+    &lt;option&gt;60&lt;/option&gt;
+    &lt;option&gt;61&lt;/option&gt;
+    &lt;option&gt;62&lt;/option&gt;
+    &lt;option&gt;63&lt;/option&gt;
+    &lt;option&gt;64&lt;/option&gt;
+    &lt;option&gt;65&lt;/option&gt;
+    &lt;option&gt;66&lt;/option&gt;
+    &lt;option&gt;67&lt;/option&gt;
+    &lt;option&gt;68&lt;/option&gt;
+    &lt;option&gt;69&lt;/option&gt;
+    &lt;option&gt;70&lt;/option&gt;
+    &lt;option&gt;71&lt;/option&gt;
+    &lt;option&gt;72&lt;/option&gt;
+    &lt;option&gt;73&lt;/option&gt;
+    &lt;option&gt;74&lt;/option&gt;
+    &lt;option&gt;75&lt;/option&gt;
+    &lt;option&gt;76&lt;/option&gt;
+    &lt;option&gt;77&lt;/option&gt;
+    &lt;option&gt;78&lt;/option&gt;
+    &lt;option&gt;79&lt;/option&gt;
+    &lt;option&gt;80&lt;/option&gt;
+    &lt;/select&gt;
 齒輪3齒數:&lt;select name=N3&gt;
      &lt;option selected="true"&gt;15&lt;/option&gt;
      &lt;option&gt;16&lt;/option&gt;
