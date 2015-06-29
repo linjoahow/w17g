@@ -83,15 +83,13 @@ class Hello(object):
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     </head>
             <body>
-            個人資料<br />
+            第七組齒輪部分<br />
             <a href="mygeartest2">mygeartest2</a><br />
+            <a href="mygeartest3">mygeartest3(二齒)</a><br />
+            <a href="mygeartest4">mygeartest4(四齒)</a><br />
+            <a href="mygeartest5">mygeartest5(六齒)</a><br />
             <a href="man">man(自動組立)</a><br />
             <a href="man2">man2(全組分工組立)</a><br />
-            以下為40223120(林家豪)的齒輪<br />
-            <a href="mygeartest3">1人齒輪嚙合</a><br />
-            以下為 40223120 40223137的協同齒輪<br />
-            <a href="mygeartest4">2人齒輪嚙合</a><br />
-            
             </body>
             </html>
      '''
@@ -1310,6 +1308,11 @@ class Hello(object):
 
     </script>
     <canvas id="plotarea" width="2500" height="1200"></canvas>
+    </body>
+    </html>
+    '''
+
+        return outstring
     @cherrypy.expose
     # N 為齒數, M 為模數, P 為壓力角
     def mygeartest5(self , M=10, P=15,N1=15, N2=24,N3=15,N4=24 ,N5=15,N6=24):
@@ -1329,8 +1332,8 @@ class Hello(object):
     模數:<input type=text name=M><br />
     壓力角:<input type=text name=P><br />
     齒輪1齒數:<select name=N1>
-         <option selected="true">15</option>
-         <option>16</option>
+        <option selected="true">15</option>
+        <option>16</option>
         <option>17</option>
         <option>18</option>
         <option>19</option>
